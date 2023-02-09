@@ -5,3 +5,8 @@
   align-items: center;
   min-height: 100vh;
 }
+.logo {
+  height: 128px;
+  width: 128px;
+  margin: 1rem;
+}

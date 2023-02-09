@@ -3,7 +3,7 @@
 
 This project is a twitter clone oriented to the healthcare system.
 
-I will use Next.js & Firebas.
+I will use Next.js & Firebase.
 
 ## Authors
 | Name  | Mail | Github
