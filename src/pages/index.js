@@ -1,8 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
 import logo from "../../public/caduceo.png";
+import google from "../../public/google.png";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/home.module.css";
+import Button from "@/components/Button";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,7 +20,11 @@ export default function Home() {
       <main className={styles.main}>
         <Image className={styles.logo} src={logo} alt="caduceo" />
         <h1 className={styles.title}>Welcome to Salute !</h1>
-        <h2>Talk about the lastest healthcare discoveries</h2>
+        <h2>Talk about the lastest healthcare discoveries ...</h2>
+        <Button>
+          <Image className={styles.google} src={google} alt="google" />
+          Login With Google
+        </Button>
       </main>
     </>
   );
