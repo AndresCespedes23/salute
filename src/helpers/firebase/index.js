@@ -23,7 +23,15 @@ const app = initializeApp(firebaseConfig);
 export const loginWithGoogle = () => {
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
-  return signInWithPopup(auth, googleProvider);
+  return signInWithPopup(auth, googleProvider).then(() => {
+    const { displayName, email, photoURL } = user;
+
+    return {
+      avatar: photoURL,
+      username: displayName,
+      email,
+    };
+  });
 };
 
 const mapUserFromFirebaseAuthToUser = (user) => {
@@ -44,7 +52,7 @@ export const singOutWithGoogle = () => {
 export const onAuthStateChange = (onChange) => {
   const auth = getAuth();
   return auth.onAuthStateChanged((user) => {
-    const normalizedUser = mapUserFromFirebaseAuthToUser(user);
+    const normalizedUser = user ? mapUserFromFirebaseAuthToUser(user) : null;
     onChange(normalizedUser);
   });
 };
