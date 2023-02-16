@@ -5,10 +5,31 @@ import google from "../../public/google.png";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/home.module.css";
 import Button from "@/components/Button";
+import {
+  loginWithGoogle,
+  onAuthStateChange,
+  singOutWithGoogle,
+} from "@/helpers/firebase";
+import { useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const [user, setUser] = useState(null);
+  console.log(user);
+  const handleLogin = () => {
+    loginWithGoogle()
+      .then(setUser)
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  const handleSingOut = () => {
+    singOutWithGoogle();
+  };
+  useEffect(() => {
+    onAuthStateChange(setUser);
+  }, []);
   return (
     <>
       <Head>
@@ -21,10 +42,27 @@ export default function Home() {
         <Image className={styles.logo} src={logo} alt="caduceo" />
         <h1 className={styles.title}>Welcome to Salute !</h1>
         <h2>Talk about the lastest healthcare discoveries ...</h2>
-        <Button>
-          <Image className={styles.google} src={google} alt="google" />
-          Login With Google
-        </Button>
+        {user === null && (
+          <Button onClick={handleLogin}>
+            <Image className={styles.google} src={google} alt="google" />
+            Login With Google
+          </Button>
+        )}
+        {user && user.avatar && (
+          <div>
+            <Image
+              className={styles.user}
+              loader={() => user.avatar}
+              unoptimized={true}
+              src={user.avatar}
+              width={50}
+              height={50}
+              alt="user"
+            />
+            <p>Hello {user.username}</p>
+            {/*<Button onClick={handleSingOut}>Sing Out</Button>}*/}
+          </div>
+        )}
       </main>
     </>
   );
