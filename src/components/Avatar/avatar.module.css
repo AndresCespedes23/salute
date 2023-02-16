@@ -1,0 +1,9 @@
+.avatarContainer {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+  }
+    .avatar {
+      border-radius: 9999px;
+      margin-right: 1vw;
+    }
