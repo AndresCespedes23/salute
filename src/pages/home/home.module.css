@@ -1,0 +1,22 @@
+.homeHeader {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    height: 49px;
+    border-bottom: 1px solid #CCC;
+    width: 100%
+}
+    .homeTitle {
+        margin: 1rem;
+    }
+.homeTimeline {
+    padding-top: 100px;
+}
+.homeNavbar {
+    position: fixed;
+    bottom: 0;
+    height: 49px;
+    border-top: 1px solid #CCC;
+    width: 100%
+}
