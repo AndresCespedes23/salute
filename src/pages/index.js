@@ -1,22 +1,21 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Image from "next/image";
 import logo from "../../public/caduceo.png";
 import google from "../../public/google.png";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/salute.module.css";
 import Button from "@/components/Button";
-import {
-  loginWithGoogle,
-  onAuthStateChange,
-  singOutWithGoogle,
-} from "@/helpers/firebase";
+import { loginWithGoogle, onAuthStateChange } from "@/helpers/firebase";
 import { useEffect, useState } from "react";
 import Avatar from "@/components/Avatar";
 import HtmlHead from "@/components/HtmlHead";
+import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [user, setUser] = useState(null);
+  const router = useRouter();
   const handleLogin = () => {
     loginWithGoogle()
       .then(setUser)
@@ -24,12 +23,12 @@ export default function Home() {
         console.log(err);
       });
   };
-  const handleSingOut = () => {
-    singOutWithGoogle();
-  };
   useEffect(() => {
     onAuthStateChange(setUser);
   }, []);
+  useEffect(() => {
+    user && router.replace("/home");
+  }, [user]);
   return (
     <>
       <HtmlHead />
@@ -52,7 +51,6 @@ export default function Home() {
                 src={user.avatar}
                 text={user.username}
               />
-              <Button onClick={handleSingOut}>Sing Out</Button>
             </div>
           )}
         </div>
