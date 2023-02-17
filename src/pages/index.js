@@ -2,19 +2,19 @@
 import Image from "next/image";
 import logo from "../../public/caduceo.png";
 import google from "../../public/google.png";
+import heartbeat from "../../public/heartbeat.gif";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/salute.module.css";
 import Button from "@/components/Button";
 import { loginWithGoogle, onAuthStateChange } from "@/helpers/firebase";
 import { useEffect, useState } from "react";
-import Avatar from "@/components/Avatar";
 import HtmlHead from "@/components/HtmlHead";
 import { useRouter } from "next/router";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(undefined);
   const router = useRouter();
   const handleLogin = () => {
     loginWithGoogle()
@@ -44,14 +44,8 @@ export default function Home() {
               Login With Google
             </Button>
           )}
-          {user && user.avatar && (
-            <div className={styles.user}>
-              <Avatar
-                alt={user.username}
-                src={user.avatar}
-                text={user.username}
-              />
-            </div>
+          {user === undefined && (
+            <Image height={90} width={90} src={heartbeat} alt="loading..." />
           )}
         </div>
       </main>
