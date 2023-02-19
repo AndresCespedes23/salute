@@ -7,6 +7,14 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
+import {
+  addDoc,
+  collection,
+  doc,
+  getFirestore,
+  serverTimestamp,
+  setDoc,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY,
@@ -19,6 +27,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 export const loginWithGoogle = () => {
   const auth = getAuth();
@@ -35,12 +44,13 @@ export const loginWithGoogle = () => {
 };
 
 const mapUserFromFirebaseAuthToUser = (user) => {
-  const { displayName, email, photoURL } = user;
+  const { displayName, email, photoURL, uid } = user;
 
   return {
     avatar: photoURL,
     username: displayName,
     email,
+    uid,
   };
 };
 
@@ -54,5 +64,14 @@ export const onAuthStateChange = (onChange) => {
   return auth.onAuthStateChanged((user) => {
     const normalizedUser = user ? mapUserFromFirebaseAuthToUser(user) : null;
     onChange(normalizedUser);
+  });
+};
+
+export const addTweet = (userId) => {
+  return addDoc(collection(db, "twits"), {
+    userId,
+    likesCount: 0,
+    sharedCount: 0,
+    createdAt: serverTimestamp(),
   });
 };
