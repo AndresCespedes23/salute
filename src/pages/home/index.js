@@ -1,16 +1,18 @@
 import HtmlHead from "@/components/HtmlHead";
 import Tweet from "@/components/Tweet";
+import useUser from "@/hooks/useUser";
 import { useEffect, useState } from "react";
 import styles from "./home.module.css";
 
 export default function Home() {
   const [timeline, setTimeline] = useState([]);
-
+  const user = useUser();
   useEffect(() => {
-    fetch("/api/statuses/home_timeline")
-      .then((res) => res.json())
-      .then(setTimeline);
-  }, []);
+    user &&
+      fetch("/api/statuses/home_timeline")
+        .then((res) => res.json())
+        .then(setTimeline);
+  }, [user]);
   return (
     <>
       <HtmlHead />
