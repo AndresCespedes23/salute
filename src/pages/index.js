@@ -6,26 +6,24 @@ import heartbeat from "../../public/heartbeat.gif";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/salute.module.css";
 import Button from "@/components/Button";
-import { loginWithGoogle, onAuthStateChange } from "@/helpers/firebase";
-import { useEffect, useState } from "react";
+import { loginWithGoogle } from "@/helpers/firebase";
+import { useEffect } from "react";
 import HtmlHead from "@/components/HtmlHead";
 import { useRouter } from "next/router";
+import useUser, { USER_STATES } from "../hooks/useUser";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [user, setUser] = useState(undefined);
+  const user = useUser();
   const router = useRouter();
   const handleLogin = () => {
     loginWithGoogle()
-      .then(setUser)
+      .then(user)
       .catch((err) => {
         console.log(err);
       });
   };
-  useEffect(() => {
-    onAuthStateChange(setUser);
-  }, []);
   useEffect(() => {
     user && router.replace("/home");
   }, [user]);
@@ -38,13 +36,13 @@ export default function Home() {
           <h1 className={styles.title}>Welcome to Salute !</h1>
           <p>Talk about the lastest healthcare discoveries ...</p>
 
-          {user === null && (
+          {user === USER_STATES.NOT_LOGGED && (
             <Button onClick={handleLogin}>
               <Image className={styles.google} src={google} alt="google" />
               Login With Google
             </Button>
           )}
-          {user === undefined && (
+          {user === USER_STATES.NOT_KNOWN && (
             <Image height={90} width={90} src={heartbeat} alt="loading..." />
           )}
         </div>
