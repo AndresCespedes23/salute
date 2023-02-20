@@ -11,9 +11,9 @@ import {
   addDoc,
   collection,
   doc,
+  getDocs,
   getFirestore,
   serverTimestamp,
-  setDoc,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -67,11 +67,23 @@ export const onAuthStateChange = (onChange) => {
   });
 };
 
-export const addTweet = (userId) => {
-  return addDoc(collection(db, "twits"), {
-    userId,
-    likesCount: 0,
-    sharedCount: 0,
+export const addTweet = (tweet) => {
+  return addDoc(collection(db, "tweets"), {
+    tweet,
     createdAt: serverTimestamp(),
+  });
+};
+
+export const fetchLatestTweets = () => {
+  return getDocs(collection(db, "tweets")).then(({ docs }) => {
+    return docs.map((user) => {
+      const data = user.data();
+      const id = user.id;
+
+      return {
+        ...data,
+        id,
+      };
+    });
   });
 };
