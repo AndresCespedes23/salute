@@ -1,12 +1,13 @@
 .tweet {
     display: flex;
-    padding: 10px 15px;
+    align-items: center;
+    padding: 1rem;
     border-bottom: 2px solid #eaf7ff;
 }
 .avatarContainer {
     padding-right: 1vw;
 }
 .tweetMessage{
-    margin: 0;
+    margin-top: 0rem;
     line-height: 1.3125;
 }
