@@ -18,13 +18,14 @@ export default function Home() {
         <h2 className={styles.homeTitle}>Inicio</h2>
       </header>
       <section className={styles.homeTimeline}>
-        {timeline.map(({ id, tweet }) => (
+        {timeline.map(({ id, tweet, createdAt }) => (
           <Tweet
             id={id}
             key={id}
             avatar={tweet.avatar}
             userName={tweet.userName}
             content={tweet.content}
+            createdAt={createdAt}
           />
         ))}
       </section>

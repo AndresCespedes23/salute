@@ -1,7 +1,9 @@
 import Avatar from "@/components/Avatar";
+import useTimeAgo from "@/hooks/useTimeago";
 import styles from "./tweet.module.css";
 
 export default function Tweet({ avatar, userName, content, createdAt, id }) {
+  const timeago = useTimeAgo(createdAt);
   return (
     <>
       <article className={styles.tweet}>
@@ -12,7 +14,7 @@ export default function Tweet({ avatar, userName, content, createdAt, id }) {
           <header>
             <strong>{userName}</strong>
             <span>·</span>
-            <p>{createdAt}</p>
+            <p className={styles.timestamp}>{timeago}</p>
           </header>
           <p className={styles.tweetMessage}>{content}</p>
         </section>

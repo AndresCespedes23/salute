@@ -79,9 +79,11 @@ export const fetchLatestTweets = () => {
     return docs.map((user) => {
       const data = user.data();
       const id = user.id;
+      const { createdAt } = data;
 
       return {
         ...data,
+        createdAt: +createdAt.toDate(),
         id,
       };
     });
