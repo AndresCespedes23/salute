@@ -80,6 +80,7 @@ export const fetchLatestTweets = () => {
       const data = user.data();
       const id = user.id;
       const { createdAt } = data;
+      // ordenar datos de forma descendente
 
       return {
         ...data,
