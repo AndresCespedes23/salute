@@ -1,7 +1,10 @@
 import HtmlHead from "@/components/HtmlHead";
+import Compose from "@/components/Icons/Compose";
+import Search from "@/components/Icons/Search";
 import Tweet from "@/components/Tweet";
 import { fetchLatestTweets } from "@/helpers/firebase";
 import useUser from "@/hooks/useUser";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./home.module.css";
 
@@ -29,7 +32,14 @@ export default function Home() {
           />
         ))}
       </section>
-      <nav className={styles.homeNavbar}></nav>
+      <nav className={styles.homeNavbar}>
+        <Link className={styles.links} href="/search">
+          <Search />
+        </Link>
+        <Link className={styles.links} href="/compose/tweet">
+          <Compose />
+        </Link>
+      </nav>
     </>
   );
 }

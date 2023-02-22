@@ -16,10 +16,16 @@
     padding-top:  3.5rem;
 }
 .homeNavbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     position: fixed;
     bottom: 0;
     height: 49px;
     border-top: 1px solid #CCC;
     background: #FFF;
     width: 100%
+}
+.links {
+    margin: 1rem;
 }
