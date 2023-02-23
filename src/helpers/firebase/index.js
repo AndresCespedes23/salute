@@ -10,11 +10,13 @@ import {
 import {
   addDoc,
   collection,
-  doc,
   getDocs,
   getFirestore,
+  orderBy,
+  query,
   serverTimestamp,
 } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY,
@@ -28,6 +30,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const storage = getStorage(app);
 
 export const loginWithGoogle = () => {
   const auth = getAuth();
@@ -74,18 +77,20 @@ export const addTweet = (tweet) => {
   });
 };
 
-export const fetchLatestTweets = () => {
-  return getDocs(collection(db, "tweets")).then(({ docs }) => {
-    return docs.map((user) => {
-      const data = user.data();
-      const id = user.id;
+export const fetchLatestTweets = async () => {
+  const q = query(collection(db, "tweets"), orderBy("createdAt", "desc"));
+  const querySnapshot = getDocs(q);
+
+  return await querySnapshot.then(({ docs }) => {
+    return docs.map((doc) => {
+      const data = doc.data();
+      const id = doc.id;
       const { createdAt } = data;
-      // ordenar datos de forma descendente
 
       return {
         ...data,
-        createdAt: +createdAt.toDate(),
         id,
+        createdAt: +createdAt.toDate(),
       };
     });
   });
