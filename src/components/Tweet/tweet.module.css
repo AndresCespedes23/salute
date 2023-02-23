@@ -14,3 +14,9 @@
 .timestamp {
     color: #00000083
 }
+.tweetImg{
+    height: auto;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 10px;
+}
