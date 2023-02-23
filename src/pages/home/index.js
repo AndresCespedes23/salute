@@ -28,6 +28,7 @@ export default function Home() {
             avatar={tweet.avatar}
             userName={tweet.userName}
             content={tweet.content}
+            img={tweet.img}
             createdAt={createdAt}
           />
         ))}
