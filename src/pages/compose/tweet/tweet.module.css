@@ -1,12 +1,41 @@
-.tweetArea {
-    padding: 1rem;
-    min-height: 15vh;
-    border: 0;
-    outline: 0;
-    resize: none;
-    font-size: 1.5rem;
-    width: 100%;
+.formTweet {
+  margin: 1rem 3rem 0rem 1rem;
 }
-.btnContainer {
-    padding: 1rem;
+.tweetArea {
+  padding: 1rem;
+  min-height: 15vh;
+  border: 0;
+  outline: 0;
+  resize: none;
+  font-size: 1.5rem;
+  width: 100%;
+  border-radius: 10px;
+}
+.tweetAreaBorder {
+  padding: 1rem;
+  min-height: 15vh;
+  border: 3px dashed #000;
+  outline: 0;
+  resize: none;
+  font-size: 1.5rem;
+  width: 100%;
+  border-radius: 10px;
+}
+.btnImg {
+  background: rgba(0, 0, 0, 0.3);
+  border: 0;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 24px;
+  width: 32px;
+  height: 32px;
+}
+.uploadImg {
+  border-radius: 10px;
+  height: auto;
+  width: 100%;
+}
+.avatarContainer{
+  display: flex;
+
 }
