@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { onAuthStateChange } from "../helpers/firebase";
+import { onAuthStateChange } from "../helpers/firebase/client";
 import { useRouter } from "next/router";
 
 export const USER_STATES = {
