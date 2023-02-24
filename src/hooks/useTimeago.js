@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
+
 const DATE_UNITS = [
   ["day", 86400],
   ["hour", 3600],
   ["minute", 60],
-  ["seconds", 1],
+  ["second", 1],
 ];
 
 const getDateDiffs = (timestamp) => {
