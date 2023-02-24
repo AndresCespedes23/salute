@@ -2,7 +2,7 @@ import HtmlHead from "@/components/HtmlHead";
 import Compose from "@/components/Icons/Compose";
 import Search from "@/components/Icons/Search";
 import Tweet from "@/components/Tweet";
-import { fetchLatestTweets } from "@/helpers/firebase";
+import { fetchLatestTweets } from "@/helpers/firebase/client";
 import useUser from "@/hooks/useUser";
 import Link from "next/link";
 import { useEffect, useState } from "react";

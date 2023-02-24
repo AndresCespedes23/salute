@@ -6,7 +6,7 @@ import heartbeat from "../../public/heartbeat.gif";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/salute.module.css";
 import Button from "@/components/Button";
-import { loginWithGoogle } from "@/helpers/firebase";
+import { loginWithGoogle } from "@/helpers/firebase/client";
 import { useEffect } from "react";
 import HtmlHead from "@/components/HtmlHead";
 import { useRouter } from "next/router";

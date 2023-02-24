@@ -5,7 +5,7 @@ import Button from "@/components/Button";
 import styles from "./tweet.module.css";
 import useUser from "@/hooks/useUser";
 import { useState } from "react";
-import { addTweet } from "../../../helpers/firebase";
+import { addTweet } from "../../../helpers/firebase/client";
 import { useRouter } from "next/router";
 import Avatar from "@/components/Avatar";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
