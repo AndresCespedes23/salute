@@ -4,6 +4,10 @@
     padding: 1rem;
     border-bottom: 2px solid #eaf7ff;
 }
+.tweet:hover {
+    background: #f5f8fa;
+    cursor: pointer;
+}
 .avatarContainer {
     padding-right: 1vw;
 }
@@ -13,6 +17,12 @@
 }
 .timestamp {
     color: #00000083
+}
+.tweetLinks{
+    text-decoration: none
+}
+.tweetLinks:hover {
+    text-decoration: underline;
 }
 .tweetImg{
     height: auto;
