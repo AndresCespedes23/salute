@@ -2,7 +2,6 @@
 import Image from "next/image";
 import logo from "../../public/caduceo.png";
 import google from "../../public/google.png";
-import heartbeat from "../../public/heartbeat.gif";
 import { Inter } from "@next/font/google";
 import styles from "@/styles/salute.module.css";
 import Button from "@/components/Button";
@@ -11,6 +10,7 @@ import { useEffect } from "react";
 import HtmlHead from "@/components/HtmlHead";
 import { useRouter } from "next/router";
 import useUser, { USER_STATES } from "../hooks/useUser";
+import { Dna } from "react-loader-spinner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -43,7 +43,14 @@ export default function Home() {
             </Button>
           )}
           {user === USER_STATES.NOT_KNOWN && (
-            <Image height={90} width={90} src={heartbeat} alt="loading..." />
+            <Dna
+              visible={true}
+              height="80"
+              width="80"
+              ariaLabel="dna-loading"
+              wrapperStyle={{}}
+              wrapperClass="dna-wrapper"
+            />
           )}
         </div>
       </main>
