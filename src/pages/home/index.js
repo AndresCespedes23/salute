@@ -2,7 +2,7 @@ import HtmlHead from "@/components/HtmlHead";
 import Compose from "@/components/Icons/Compose";
 import Search from "@/components/Icons/Search";
 import Tweet from "@/components/Tweet";
-import { fetchLatestTweets } from "@/helpers/firebase/client";
+import { listenLatestTweets } from "@/helpers/firebase/client";
 import useUser from "@/hooks/useUser";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -12,7 +12,11 @@ export default function Home() {
   const [timeline, setTimeline] = useState([]);
   const user = useUser();
   useEffect(() => {
-    user && fetchLatestTweets().then(setTimeline);
+    let unsubscribe;
+    if (user) {
+      unsubscribe = listenLatestTweets(setTimeline);
+    }
+    return () => unsubscribe && unsubscribe();
   }, [user]);
   return (
     <>

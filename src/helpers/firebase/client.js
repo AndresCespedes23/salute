@@ -10,8 +10,9 @@ import {
 import {
   addDoc,
   collection,
-  getDocs,
   getFirestore,
+  limit,
+  onSnapshot,
   orderBy,
   query,
   serverTimestamp,
@@ -75,21 +76,26 @@ export const addTweet = (tweet) => {
   });
 };
 
-export const fetchLatestTweets = async () => {
-  const q = query(collection(db, "tweets"), orderBy("createdAt", "desc"));
-  const querySnapshot = getDocs(q);
+const mapTweetFromFirebaseToTweetObject = (doc) => {
+  const data = doc.data();
+  const id = doc.id;
+  const { createdAt } = data;
 
-  return await querySnapshot.then(({ docs }) => {
-    return docs.map((doc) => {
-      const data = doc.data();
-      const id = doc.id;
-      const { createdAt } = data;
+  return {
+    ...data,
+    id,
+    createdAt: +createdAt.toDate(),
+  };
+};
 
-      return {
-        ...data,
-        id,
-        createdAt: +createdAt.toDate(),
-      };
-    });
+export const listenLatestTweets = (callback) => {
+  const q = query(
+    collection(db, "tweets"),
+    orderBy("createdAt", "desc"),
+    limit(10)
+  );
+  const unsubscribe = onSnapshot(q, ({ docs }) => {
+    const newTweets = docs.map(mapTweetFromFirebaseToTweetObject);
+    callback(newTweets);
   });
 };
