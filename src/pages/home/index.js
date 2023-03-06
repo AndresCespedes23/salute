@@ -1,4 +1,5 @@
 import HtmlHead from "@/components/HtmlHead";
+import HomeIcon from "@/components/Icons/HomeIcon";
 import Compose from "@/components/Icons/Compose";
 import Search from "@/components/Icons/Search";
 import Tweet from "@/components/Tweet";
@@ -38,6 +39,9 @@ export default function Home() {
         ))}
       </section>
       <nav className={styles.homeNavbar}>
+        <Link className={styles.links} href="/home">
+          <HomeIcon />
+        </Link>
         <Link className={styles.links} href="/search">
           <Search />
         </Link>
