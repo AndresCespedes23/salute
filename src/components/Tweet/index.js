@@ -29,10 +29,10 @@ export default function Tweet({
         <div className={styles.avatarContainer}>
           <Avatar alt={userName} src={avatar} />
         </div>
-        <section>
+        <section className={styles.tweetContent}>
           <header>
             <strong>{userName}</strong>
-            <span>·</span>
+            <span> · </span>
             <Link className={styles.tweetLinks} href={`/status/${id}`}>
               <time className={styles.timestamp} title={createdAtFormated}>
                 {timeago}

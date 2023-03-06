@@ -1,6 +1,5 @@
 .tweet {
     display: flex;
-    align-items: center;
     padding: 1rem;
     border-bottom: 2px solid #eaf7ff;
 }
@@ -10,6 +9,11 @@
 }
 .avatarContainer {
     padding-right: 1vw;
+}
+.tweetContent{
+    display: flex;
+    flex-direction: column;
+    padding-top: 2vh;
 }
 .tweetMessage{
     margin-top: 0rem;
