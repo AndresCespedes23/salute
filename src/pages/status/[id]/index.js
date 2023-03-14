@@ -1,6 +1,6 @@
 import HtmlHead from "@/components/HtmlHead";
 import Tweet from "@/components/Tweet";
-import admin from "@/helpers/firebase/admin";
+import app from "@/helpers/firebase/admin";
 import { useRouter } from "next/router";
 
 export default function TweetPage(props) {
@@ -16,7 +16,7 @@ export default function TweetPage(props) {
 }
 
 export async function getStaticPaths() {
-  const snapshot = await admin.firestore().collection("tweets").get();
+  const snapshot = await app.firestore().collection("tweets").get();
 
   const paths = snapshot.docs.map((doc) => ({
     params: { id: doc.id },
@@ -31,7 +31,7 @@ export async function getStaticProps(context) {
   const { params } = context;
   const { id } = params;
 
-  return admin
+  return app
     .firestore()
     .collection("tweets")
     .doc(id)
