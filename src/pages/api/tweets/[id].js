@@ -1,11 +1,12 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { firestore } from "@/helpers/firebase/admin";
+import app from "@/helpers/firebase/admin";
 
 export default (request, response) => {
   const { query } = request;
   const { id } = query;
 
-  firestore
+  app
+    .firestore()
     .collection("tweets")
     .doc(id)
     .get()
