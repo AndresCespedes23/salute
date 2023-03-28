@@ -1,11 +1,11 @@
 /* eslint-disable import/no-anonymous-default-export */
-import app from "@/helpers/firebase/admin";
+/* import admin from "@/helpers/firebase/admin";
 
 export default (request, response) => {
   const { query } = request;
   const { id } = query;
 
-  app
+  admin
     .firestore()
     .collection("tweets")
     .doc(id)
@@ -23,3 +23,4 @@ export default (request, response) => {
       response.status(404).end();
     });
 };
+*/
