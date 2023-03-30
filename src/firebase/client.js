@@ -31,18 +31,16 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-export const loginWithGoogle = () => {
+export const loginWithGoogle = async () => {
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
-  return signInWithPopup(auth, googleProvider).then(() => {
-    const { displayName, email, photoURL } = user;
-
-    return {
-      avatar: photoURL,
-      username: displayName,
-      email,
-    };
-  });
+  await signInWithPopup(auth, googleProvider);
+  const { displayName, email, photoURL } = user;
+  return {
+    avatar: photoURL,
+    username: displayName,
+    email,
+  };
 };
 
 const mapUserFromFirebaseAuthToUser = (user) => {

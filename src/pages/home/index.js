@@ -3,7 +3,7 @@ import HomeIcon from "@/components/Icons/HomeIcon";
 import Compose from "@/components/Icons/Compose";
 import Search from "@/components/Icons/Search";
 import Tweet from "@/components/Tweet";
-import { listenLatestTweets } from "@/helpers/firebase/client";
+import { listenLatestTweets } from "@/firebase/client";
 import useUser from "@/hooks/useUser";
 import Link from "next/link";
 import { useEffect, useState } from "react";

@@ -2,17 +2,14 @@
 import Image from "next/image";
 import logo from "../../public/caduceo.png";
 import google from "../../public/google.png";
-import { Inter } from "@next/font/google";
 import styles from "@/styles/salute.module.css";
 import Button from "@/components/Button";
-import { loginWithGoogle } from "@/helpers/firebase/client";
+import { loginWithGoogle } from "@/firebase/client";
 import { useEffect } from "react";
 import HtmlHead from "@/components/HtmlHead";
 import { useRouter } from "next/router";
 import useUser, { USER_STATES } from "../hooks/useUser";
 import { Dna } from "react-loader-spinner";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const user = useUser();
