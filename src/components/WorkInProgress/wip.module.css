@@ -1,0 +1,24 @@
+.wip {
+    padding-top: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.logo {
+    height: 64px;
+    width: 64px;
+    padding-bottom: 4vh;
+  }
+.title {
+    font-weight: 900;
+}
+.btnLink {
+    text-decoration: none;
+}
+.gif {
+    padding: 1rem;
+    height: 300px;
+    width: 300px;
+    border-radius: 9999px;
+}
