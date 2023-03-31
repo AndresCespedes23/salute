@@ -33,14 +33,8 @@ const db = getFirestore(app);
 
 export const loginWithGoogle = async () => {
   const auth = getAuth();
-  const googleProvider = new GoogleAuthProvider();
-  await signInWithPopup(auth, googleProvider);
-  const { displayName, email, photoURL } = user;
-  return {
-    avatar: photoURL,
-    username: displayName,
-    email,
-  };
+  const provider = new GoogleAuthProvider();
+  await signInWithPopup(auth, provider);
 };
 
 const mapUserFromFirebaseAuthToUser = (user) => {
