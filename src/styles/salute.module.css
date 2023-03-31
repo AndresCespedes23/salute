@@ -3,12 +3,22 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 95vh;
+  min-height: 100vh;
+  background-image: url(../../public/medicine-pattern.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgb(77, 77, 77);
+    background-blend-mode: multiply;
+    color: #FFF;
 }
   .logo {
     height: 128px;
     width: 128px;
     margin-bottom: 1rem;
+    padding: 8px;
+    background-color: #ffffffd8;
+    border-radius: 9999px;
+    backdrop-filter: blur(5px)
   }
   .presentation {
     display: flex;
@@ -19,10 +29,12 @@
   }
     .title {
       font-size: 2rem;
+      text-shadow: 2px 3px rgba(0, 0, 0, 0.74);
     }
     .presentation p {
       padding-top: 3vh;
       font-size: 1rem;
+      text-shadow: 1px 2px rgba(0, 0, 0, 0.74);
     }
     .google {
       margin-right: 1vw;
@@ -32,4 +44,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+@media only screen and (min-width: 992px) {
+  .title {
+    font-size: 2.5rem;
+  }
+  .presentation p {
+    font-size: 1.5rem;
+  }
 }
