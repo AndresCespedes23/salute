@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import Image from "next/image";
-import logo from "../../public/caduceo.png";
+import logo from "../../public/hospital.png";
 import google from "../../public/google.png";
 import styles from "@/styles/salute.module.css";
 import Button from "@/components/Button";
