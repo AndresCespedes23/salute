@@ -3,7 +3,7 @@ import HomeIcon from "@/components/Icons/HomeIcon";
 import Compose from "@/components/Icons/Compose";
 import Search from "@/components/Icons/Search";
 import Tweet from "@/components/Tweet";
-import { listenLatestTweets } from "@/firebase/client";
+import { listenLatestTweets, singOutWithGoogle } from "@/firebase/client";
 import useUser from "@/hooks/useUser";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -23,7 +23,10 @@ export default function Home() {
     <>
       <HtmlHead />
       <header className={styles.homeHeader}>
-        <h2 className={styles.homeTitle}>Inicio</h2>
+        <h2 className={styles.homeTitle}>Home</h2>
+        <button className={styles.btnSingOut} onClick={singOutWithGoogle}>
+          Sing Out
+        </button>
       </header>
       <section className={styles.homeTimeline}>
         {timeline.map(({ id, tweet, createdAt }) => (

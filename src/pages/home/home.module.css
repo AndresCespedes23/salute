@@ -1,5 +1,6 @@
 .homeHeader {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     position: fixed;
     top: 0;
@@ -25,6 +26,27 @@
     border-top: 1px solid #CCC;
     background: #FFF;
     width: 100%
+}
+.btnSingOut {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 1vw;
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        background-color: #000;
+        border: 0;
+        color: #FFF;
+        border-radius: 9999px;
+        font-size: 1rem;
+        font-weight: 800;
+        transition: opacity .3s ease;
+        user-select: none;
+      
+    
+}
+.btnSingOut:hover {
+    opacity: .7;
 }
 .links {
     margin: 1rem;
