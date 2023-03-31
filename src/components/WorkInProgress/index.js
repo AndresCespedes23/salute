@@ -10,14 +10,12 @@ export default function WorkInProgress() {
   return (
     <section className={styles.wip}>
       <Image className={styles.logo} src={logo} alt="caduceo" />
-      <h1 className={styles.title}>
-        Sorry, we're still developing this page...
-      </h1>
+      <h1 className={styles.title}>Sorry, we're still developing this ...</h1>
       <div>
         <Image className={styles.gif} src={wip} alt="work-in-progress" />
       </div>
       <Link className={styles.btnLink} href="/home">
-        <Button>Go Home</Button>
+        <Button>Please, go back</Button>
       </Link>
     </section>
   );
