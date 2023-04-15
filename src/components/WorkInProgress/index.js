@@ -4,7 +4,7 @@ import Link from "next/link";
 import logo from "public/hospital.png";
 import wip from "public/wfh.gif";
 import Button from "../Button";
-import styles from "./wip.module.css";
+import styles from "@/styles/wip.module.css";
 
 export default function WorkInProgress() {
   return (

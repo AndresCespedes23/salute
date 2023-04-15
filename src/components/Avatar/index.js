@@ -1,5 +1,5 @@
 import Image from "next/image";
-import styles from "./avatar.module.css";
+import styles from "@/styles/avatar.module.css";
 export default function Avatar({ alt, src, text }) {
   return (
     <div className={styles.avatarContainer}>

@@ -5,7 +5,7 @@ import useDateTimeFormat from "@/hooks/useDateTimeFormat";
 import useTimeAgo from "@/hooks/useTimeago";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import styles from "./tweet.module.css";
+import styles from "@/styles/tweet.module.css";
 
 export default function Tweet({
   avatar,
