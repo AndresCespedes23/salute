@@ -7,7 +7,7 @@ import { listenLatestTweets, singOutWithGoogle } from "@/firebase/client";
 import useUser from "@/hooks/useUser";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import styles from "./home.module.css";
+import styles from "@/styles/home.module.css";
 
 export default function Home() {
   const [timeline, setTimeline] = useState([]);

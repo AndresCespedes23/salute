@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/alt-text */
 import HtmlHead from "@/components/HtmlHead";
 import Button from "@/components/Button";
-import styles from "./tweet.module.css";
+import styles from "@/styles/compose.module.css";
 import useUser from "@/hooks/useUser";
 import { useState } from "react";
 import { addTweet } from "../../../firebase/client";
